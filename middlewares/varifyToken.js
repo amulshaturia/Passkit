@@ -12,7 +12,7 @@ const varifyToken = (req , res , next)=>{
         const token = headerAuthorization.split(" ")[1];
         jwt.verify(token ,process.env.SECRET_TOKEN_STRING , (err , decoded)=>{
             if(err){
-                console.log("invalid token !")
+                // console.log("invalid token !")
                 return res.status(200).send({"tokenVarified" : false}) ; 
             }
             else{

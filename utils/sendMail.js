@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 const crypto = require("crypto"); 
 const tokenModel  = require("../models/token"); 
  
-const BASE_URL = "http://localhost:8000"; 
+const BASE_URL = "https://passkit-five.vercel.app"; 
 
 const sendMail = async (req , res  , user)=>{
     console.log("mail sendin' !"); 
