@@ -39,9 +39,9 @@ const register = async (req, res) => {
 }
 
 const login = async (req, res) => {
-    console.log("inseide login"); 
+    // console.log("inseide login"); 
     const { userName, email, password } = req.body;
-    console.log(`${userName } , ${email}`) ; 
+    // console.log(`${userName } , ${email}`) ; 
 
     const user = await userModel.findOne({ $or: [{userName : userName} , {email : email}]});
     if (!user) {
@@ -60,7 +60,7 @@ const login = async (req, res) => {
     }
 
     if (await bcrypt.compare(password, user.password)) {
-        console.log("login success!"); 
+        // console.log("login success!"); 
         let payload = {
             userName : user.userName,
             email: user.email,
@@ -77,7 +77,7 @@ const login = async (req, res) => {
          }); 
     }
     else {
-        console.log("password galat hei"); 
+        // console.log("password galat hei"); 
        res.send({
         "found" : true,
         "userName" : user.userName ,
@@ -87,7 +87,7 @@ const login = async (req, res) => {
 }
 
 const getAll = async (req, res) => {
-    console.log("req has came!"); 
+    // console.log("req has came!"); 
     const key = req.body.password;
     // console.log("key : "+ req.body.password);
     // console.log("userName : "+ req.body.userName);
@@ -109,9 +109,7 @@ const getAll = async (req, res) => {
         passwords[i]["platformPassword"] = decrypted_platformPassword;
     }
 
-    for(let i = 0 ; i < passwords.length ; i++){
-        console.log(passwords[i]["platformPassword"])
-    }
+   
     const response = {
         "tokenVarified" : true ,
         passwords
@@ -120,7 +118,7 @@ const getAll = async (req, res) => {
 }
 
 const addPassword = async (req, res) => {
-    console.log("inside Addinggggg !!!!!"); 
+    // console.log("inside Addinggggg !!!!!"); 
     const { platform, platformUserName, platformPassword } = req.body;
     const key = req.body.password ;
 //   console.log(key)
@@ -144,7 +142,7 @@ console.log(platformPassword)
         res.status(201).json({"ok" : true});
     }
     catch (error) {
-        console.log("sorry there's some error while saving ", error);
+        // console.log("sorry there's some error while saving ", error);
         res.status(500).json({"ok" : false}) ; 
     }
 }
@@ -156,18 +154,18 @@ const userDetail = async(req, res) => {
 }
 
 const deletePassword = async(req , res) =>{
-    console.log("inside delete.......................................................") ; 
+    // console.log("inside delete.......................................................") ; 
     try{
         console.log(req.body.del_id); 
         const xx = await passwordModel.findByIdAndDelete(req.body.del_id) ; 
   
-        console.log("xyz"); 
+        // console.log("xyz"); 
         res.status(200).send({
             "del_ok" : true 
         }); 
     }
     catch(err){
-        console.log("error deleting password " + err) ; 
+        // console.log("error deleting password " + err) ; 
         res.send(500).json({message : "del error from server"}); 
     }
 }
