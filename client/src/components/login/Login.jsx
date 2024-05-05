@@ -29,8 +29,7 @@ const Login = () => {
                 const dt = await axios.post("https://passkit-five.vercel.app/user/login", {
                     userName, email, password
                 }); 
-
-                console.log(dt) ; 
+ 
 
                 if(!dt["data"]["found"]){
                     swal("SORRY !", `No such user exists`, "failed");
