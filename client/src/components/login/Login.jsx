@@ -26,7 +26,7 @@ const Login = () => {
                 swal("Enter usename" `or enter your email`, "failed");
             }
             else{
-                const dt = await axios.post("http://localhost:8000/user/login", {
+                const dt = await axios.post("https://passkit-five.vercel.app/user/login", {
                     userName, email, password
                 }); 
 

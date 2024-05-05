@@ -22,7 +22,7 @@ const Signup = () => {
             swal("SORRY !", `All fields are mandatory`, "failed");
         }
         else{
-            const data = await axios.post("http://localhost:8000/user/register", {
+            const data = await axios.post("https://passkit-five.vercel.app/user/register", {
                 userName, email, password
             })
             console.log(data) ; 

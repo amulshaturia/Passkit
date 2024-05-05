@@ -48,7 +48,7 @@ export default function PasswordList() {
     }
 
     const handleDelete = async (entry) => {
-        const response = await axios.post("http://localhost:8000/deletePassword", { del_id: entry._id }, {
+        const response = await axios.post("https://passkit-five.vercel.app/deletePassword", { del_id: entry._id }, {
             headers: {
                 Authorization: `JWT ${localStorage.getItem('jwt_token') || ""}`
             },
@@ -77,7 +77,7 @@ export default function PasswordList() {
             console.log("sending token to server " + jwtToken);
             console.log("hello")
             console.log(bdy)
-            const dt = await axios.post("http://localhost:8000/user/all", bdy, {
+            const dt = await axios.post("https://passkit-five.vercel.app/user/all", bdy, {
                 headers: {
                     Authorization: `JWT ${localStorage.getItem('jwt_token') || ""}`
                 },

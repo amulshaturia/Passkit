@@ -33,7 +33,7 @@ const Add = () => {
         data.platformUserName = platformUserName;
         
         try {
-            const response = await axios.post("http://localhost:8000/user/add",data, {
+            const response = await axios.post("https://passkit-five.vercel.app/user/add",data, {
                 headers: {
                     Authorization: `JWT ${localStorage.getItem('jwt_token') || ""}`
                 },
